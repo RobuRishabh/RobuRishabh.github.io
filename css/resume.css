@@ -47,11 +47,11 @@
     left: 30%;
     top: 0;
     transform: translateX(-50%);
-    background-color: #00aaff;
+    /*background-color: #E5F0FE;*/
     color: #fff;
-    border-radius: 50%;
+    border-radius: 100%;
     padding: 10px;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .date {
@@ -71,7 +71,6 @@
     border-radius: 5px;
     border: 3px thin rgba(0, 0, 0, 10.0);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 10.0);
-    padding: 20px;
 }
 
     .timeline-content h3 {

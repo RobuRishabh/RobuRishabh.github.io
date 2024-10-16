@@ -1690,10 +1690,13 @@ header .logo a {
 #resume .timeline-content {
 	margin-left: 35%;
 	padding-left: 60px;
+	color:black
 }
-#resume .timeline-content h4 {
-	position: relative;
-	padding-bottom: 1.8rem;
+	#resume .timeline-content h4 {
+		position: relative;
+		padding-bottom: 1.8rem;
+		color:black
+	}
 }
 #resume .timeline-content h4::after {
 	content: "";
@@ -1723,6 +1726,7 @@ header .logo a {
 	}
 	#resume .timeline-content {
 		padding-left: 50px;
+		color: black
 	}
 }
 @media only screen and (max-width:768px) {
@@ -1747,19 +1751,23 @@ header .logo a {
 	}
 	#resume .timeline-content {
 		margin: 0;
+		color: black
 	}
-	#resume .timeline-content h4 {
-		padding-bottom: 0;
-		padding-top: 2.1rem;
-		margin-bottom: .6rem;
-		font-size: 1.7rem;
-	}
-	#resume .timeline-content h4::after {
-		bottom: auto;
-		top: 0;
-	}
+		#resume .timeline-content h4 {
+			padding-bottom: 0;
+			padding-top: 2.1rem;
+			margin-bottom: .6rem;
+			font-size: 1.7rem;
+			color: black
+		}
+			#resume .timeline-content h4::after {
+				bottom: auto;
+				top: 0;
+				color: black
+			}
 	#resume .timeline-header, #resume .timeline-content {
 		padding-left: 7rem;
+		color: black
 	}
 }
 @media only screen and (max-width:480px) {
@@ -1779,6 +1787,7 @@ header .logo a {
 	}
 	#resume .timeline-header, #resume .timeline-content {
 		padding-left: 5.5rem;
+		color: black
 	}
 }
 

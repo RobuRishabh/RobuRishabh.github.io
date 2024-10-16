@@ -118,20 +118,210 @@
             .zoom-effect:hover {
                 transform: scale(1.1);
             }
-
-        body {
-            background-color: #E5F0FE;
+        /* Light mode styles (default) */
+        :root {
+            --background-color: #E5F0FE; /* Light mode background color */
+            --text-color: #000000; /* Light mode text color */
+            --header-color: black; /* Light mode header color */
         }
 
+        /* Dark mode styles */
+        .dark-mode {
+            --background-color: #1e1e1e; /* Dark mode background color */
+            --text-color: #ffffff; /* Dark mode text color */
+            --header-color: #0096C7;/* Dark mode header color */
+        }
+
+        /* Apply the background and text color variables */
+        body {
+            background-color: var(--background-color); /* Use the background color variable */
+            color: var(--text-color); /* Use the text color variable */
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        h1, h2, h3 {
+            font-weight:bold;
+            color: var(--header-color); /* Use the header color variable */
+        }
+
+        button {
+            background-color: var(--header-color); /* Button uses header color */
+            color: var(--text-color); /* Button text uses text color */
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 34px;
+        }
+
+            /* Hide default checkbox */
+            .toggle-switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+            /* Slider when checked (when dark mode is enabled) */
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                transition: 0.4s;
+                border-radius: 50%;
+            }
+
+        /* When the input is checked, move the slider */
+        input:checked + .slider {
+            background-color: #4a90e2; /* Blue color for dark mode */
+        }
+
+            input:checked + .slider:before {
+                transform: translateX(26px);
+            }
+
+        /* Icons inside the slider */
+        .slider:after {
+            
+            content: '';
+            background-image: url('images/lightmode1.png'); /* Use your own image */
+            background-size: contain; /* Ensure the image fits inside the element */
+            background-repeat: no-repeat;
+            position: absolute;
+            width: 20px; /* Adjust the width of the icon */
+            height: 20px; /* Adjust the height of the icon */
+            top: 50%; /* Position the image vertically */
+            left: 30%;
+            transform: translate(-50%, -50%); /* Center the image */
+            transition: 0.4s;
+        }
+
+        input:checked + .slider:after {
+            content: '';
+            background-image: url('images/darkmode1.png'); /* Use your own image */
+             background-size: contain;
+            background-repeat: no-repeat;
+            width: 20px; /* Same width for moon icon */
+            height: 20px; /* Same height for moon icon */
+            top: 50%; /* Keep same vertical position */
+            left: 70%;
+            transform: translate(-50%, -50%);
+            transition: 0.4s;
+        }
+
+            button:hover {
+                background-color: var(--text-color); /* Invert colors on hover */
+                color: var(--header-color);
+            }
+
+        .intro-text {
+            color: black; /* Default color for light mode */
+            transition: color 0.3s ease; /* Smooth transition when switching modes */
+        }
+
+        /* Dark Mode */
+        .dark-mode .intro-text {
+            color: white; /* Text color changes to white in dark mode */
+        }
+
+        .dark-mode .heading{
+            color:navajowhite;
+
+        }
+
+        .rag-link {
+            color: black; /* Default color for light mode */
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 90%;
+            transition: color 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+            .rag-link:hover {
+                color: blue; /* Blue color on hover in light mode */
+            }
+
+        /* Dark Mode */
+        .dark-mode .rag-link {
+            color: navajowhite; /* White color for dark mode */
+        }
+
+            .dark-mode .rag-link:hover {
+                color: lightblue; /* Light blue color on hover in dark mode */
+            }
+
+        .normal-txt {
+            color: black;
+            font-weight: bold;
+            transition: color 0.3s ease; /* Smooth transition for color change */
+
+        }
+
+        /* Dark Mode */
+        .dark-mode .normal-txt {
+            color: white; /* Change text color to white in dark mode */
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon span {
+            font-size: 40px;
+            color: black;
+            padding: 15px;
+            border-radius: 50%;
+            transition: transform 0.5s ease, color 0.5s ease;
+        }
+
+        .social-icon:hover span {
+            transform: scale(1.2);
+            color: lightblue; /* Light blue on hover in light mode */
+        }
+
+        /* Dark Mode */
+        .dark-mode .social-icon span {
+            color: white; /* White icons in dark mode */
+            font-size: 40px;
+        }
+
+        .dark-mode .social-icon:hover span {
+            color: lightblue; /* Light blue on hover in dark mode */
+        }
+
+        .dark-mode .heading-section h1.big.big-2 {
+            color: rgba(0, 150, 199, 0.1); /* Faded blue for dark mode */
+        }
+        .dark-mode .heading-section h1.big {
+    color: rgba(0, 150, 199, 0.1); /* Faded blue for dark mode */
+}
     </style>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-
+    <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
         <div class="container">
             <!-- <a class="navbar-brand" href="index.html" style="color: #008080;">RobuRishabh</a> -->
-            <a class="navbar-brand" href="Roburishabh.com">
+            <a class="navbar-brand" href="#home-section">
                 <img src="images/logo.png" alt="RobuRishabh Logo" style="width: 300px; height: 50px;">
             </a>
             <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -149,8 +339,15 @@
 
                 </ul>
             </div>
+
+            <label class="toggle-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
         </div>
     </nav>
+
+    <!-- Home Section -->
     <section id="home-section" class="hero">
         <div class="home-slider  owl-carousel">
             <div class="slider-item ">
@@ -172,32 +369,23 @@
                                 <br>
                                 <ul class="ftco-footer-social list-unstyled d-flex  align-items-center mb-0">
                                     <li class="ftco-animate">
-                                        <a href="https://www.youtube.com/@RobuRishabh" target="_blank" style="transition: transform 0.5s ease, color 0.5s ease;"
-                                           onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                           onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';">
-                                            <span class="icon-youtube" style="font-size: 45px;"></span>
+                                        <a href="https://www.youtube.com/@RobuRishabh" target="_blank" class="social-icon">
+                                            <span class="icon-youtube" style="font-size: 40px; border-radius: 100%; padding: 30px;"></span>
                                         </a>
                                     </li>
                                     <li class="ftco-animate">
-                                        <a href="https://www.linkedin.com/in/roburishabh/" target="_blank" style="transition: transform 0.5s ease, color 0.5s ease;"
-                                           onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                           onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';">
-                                            <span class="icon-linkedin" style="font-size: 45px;"></span>
+                                        <a href="https://www.linkedin.com/in/roburishabh/" target="_blank" class="social-icon">
+                                            <span class="icon-linkedin" style="font-size: 40px;"></span>
                                         </a>
                                     </li>
                                     <li class="ftco-animate">
-                                        <a href="https://github.com/RobuRishabh" target="_blank" style="transition: transform 0.5s ease, color 0.5s ease;"
-                                           onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                           onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';">
-                                            <span class="icon-github" style="font-size: 45px;"></span>
+                                        <a href="https://github.com/RobuRishabh" target="_blank" class="social-icon">
+                                            <span class="icon-github" style="font-size: 40px;"></span>
                                         </a>
                                     </li>
                                     <li class="ftco-animate">
-                                        <a href="https://medium.com/@RobuRishabh" target="_blank"
-                                           style="transition: transform 0.5s ease, color 0.5s ease;"
-                                           onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                           onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';">
-                                            <span class="icon-medium" style="font-size: 45px;"></span>
+                                        <a href="https://medium.com/@RobuRishabh" target="_blank" class="social-icon">
+                                            <span class="icon-medium" style="font-size: 40px;"></span>
                                         </a>
                                     </li>
                                 </ul>
@@ -213,6 +401,7 @@
     <br>
     <br>
 
+    <!-- About Section -->
     <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
         <div class="container">
             <div class="row">
@@ -238,86 +427,83 @@
                             <div class="col-md-12 heading-section ftco-animate">
 
                                 <h1 class="big">About</h1>
-                                <h2 class="mb-4" style="color: black;">About Me</h2>
+                                <h2 class="mb-4">About Me</h2>
 
-                                <p>
+                                <p class="intro-text">
                                     I'm Rishabh Singh, a passionate and skilled AI/ Robotics Engineer with a strong foundation
-                                    in Machine Learning, Computer Vision, Robotics and MLOps. Currently pursuing a Master of
-                                    Science in AI/Robotics at Northeastern University gaining hands-on experience in cutting-edge
-                                    technologies and algorithms. I'm eager to leverage my expertise in robotics, computer vision,
-                                    and machine learning to solve real-world challenges. Let's connect and explore how we can
+                                    in C++/Python, Machine Learning, Deep Learning, Computer Vision, LLM, Robotics and MLOps.
+                                    Currently pursuing Master of Science in AI/Robotics at Northeastern University gaining hands-on experience in cutting-edge
+                                    technologies and algorithms. I'm eager to leverage my expertise to solve real-world challenges. Let's connect and explore how we can
                                     collaborate to push the boundaries of technology.
                                 </p>
+                                <p class="intro-text"> Introducing myself in a single sentence : "I am an Ordinary man with Extraordinary dreams".</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Work Experience Section Starts Here -->
-        <div class="row">
-            <h1 class="big-3" style="color: black;">E d u c a t i o n</h1>
-        </div>
-        <div class="timeline">
-            <!-- Timeline Item 1 -->
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="date">
-                    Sept 2022 - Present
-                    <div>
-                        <strong>Northeastern University,</strong><br>
-                        <strong>Boston, MA, USA</strong>
-                    </div>
-                </div>
-                <div class="timeline-icon">
-                    <span class="icon"><i class="fa fa-graduation-cap"></i></span>
-                </div>
-                <div class="timeline-content">
-                    <h3 style="color:black; font-weight:bold">Master of Science</h3>
-                    <p style="color:black">Robotics & AI</p>
-                    <!-- <p>Leadership Position: Global Student Mentor - Supported new international student's cultural transition and academic success through one-on-one and group meetings, fostering an inclusive community and promoting intercultural competence.</p> -->
-                </div>
-            </div>
 
-            <!-- Timeline Item 2 -->
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="date">
-                    July 2016 - Sept 2020
-                    <div>
-                        <strong>Pune University,</strong><br>
-                        <strong>Pune, India</strong>
+            <!-- Work Experience Section Starts Here -->
+            <div class="row">
+                <h1 class="big-3" style="font-weight: bold;">E d u c a t i o n</h1>
+            </div>
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="date">
+                        Sept 2022 - Present
+                        <div>
+                            <strong>Northeastern University,</strong><br>
+                            <strong>Boston, MA, USA</strong>
+                        </div>
+                    </div>
+                    <div class="timeline-icon">
+                        <img src="images/neulogo.png" alt="Graduation Icon" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid #0096C7; box-shadow: 0 4px 8px rgba(0, 0, 0, 1.5);">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Master of Science</h3>
+                        <p>Robotics & AI</p>
+                        <p> GPA: 3.89/4.0</p>
+                        <!-- <p>Leadership Position: Global Student Mentor - Supported new international student's cultural transition and academic success through one-on-one and group meetings, fostering an inclusive community and promoting intercultural competence.</p> -->
                     </div>
                 </div>
-                <div class="timeline-icon">
-                    <span class="icon"><i class="fa fa-graduation-cap"></i></span>
-                </div>
-                <div class="timeline-content">
-                    <h3 style="color:black; font-weight:bold">Bachelor of Engineering</h3>
-                    <p style="color:black">Electronics and Telecommunication Engineering</p>
-                    <p style="color:black">(Graduated with first class with distinction)</p>
-                    <!-- <p>Leadership Position: Global Student Mentor - Supported new international student's cultural transition and academic success through one-on-one and group meetings, fostering an inclusive community and promoting intercultural competence.</p> -->
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="date">
+                        July 2016 - Sept 2020
+                        <div>
+                            <strong>Army Institute Of Technology</strong><br>
+                            <strong>Pune University,</strong><br>
+                            <strong>Pune, MH, India</strong>
+                        </div>
+                    </div>
+                    <div class="timeline-icon">
+                        <img src="images/aitlogo.png" alt="Graduation Icon" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid #0096C7; box-shadow: 0 4px 8px rgba(0, 0, 0, 1.5);">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Engineering</h3>
+                        <p>Electronics and Telecommunication Engineering</p>
+                        <p>(Graduated with first class with distinction)</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Work Experience Section Ends Here -->
     </section>
 
-
-
-
+    <!-- Experience Section -->
     <section class="ftco-section ftco-no-pb" id="Experience">
         <div class="container">
-            <!-- <div class="row justify-content-center pb-5">
-                <div class="col-md-10 heading-section text-center ftco-animate">
-                    <h1 class="big big-2">Resume</h1>
-                    <h2 class="mb-4">Resume</h2>
-                    <p>Seasoned Senior Data Analyst with 5+ years of experience driving business strategies through data-driven insights. Proven expertise in data science, statistical analysis, machine learning algorithms and project management.</p>
+            <div class="row justify-content-center mb-5 pb-5">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h1 class="big big-2" style="font-size:70px">Experience</h1>
+                    <h2 class="mb-4">Experience</h2>
                 </div>
-            </div> -->
-
-            <div class="row">
+            </div>
+            <!-- <div class="row">
                 <h1 class="big-4" style="color: black;">E x p e r i e n c e</h1>
                 <div class="underline"></div>
-            </div>
+            </div> -->
             <br>
             <div class="timeline">
                 <!-- Timeline Item 1 -->
@@ -330,11 +516,10 @@
                         </div>
                     </div>
                     <div class="timeline-icon">
-                        <span class="icon"><i class="fa fa-briefcase"></i></span>
+                        <img src="images/neulogo.png" alt="Company Logo" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid #0096C7; box-shadow: 0 4px 8px rgba(0, 0, 0, 1.5);">
                     </div>
                     <div class="timeline-content">
                         <h3>Computer Vision Research Assistant</h3>
-                        <!-- <p>Awesome Studio</p> -->
                         <p>Developed a cutting-edge object detection model using ResNet50 with Faster R-CNN and MobileNetV3 on HPC, optimizing for real-time performance with PyTorch and CUDA. Managed a 256 GB dataset of six classes and led data preprocessing, converting raw images to 16-bit TIFF format through debayering and transforming to linear and log spaces for accurate model evaluation.</p>
                     </div>
                 </div>
@@ -348,7 +533,7 @@
                         </div>
                     </div>
                     <div class="timeline-icon">
-                        <span class="icon"><i class="fa fa-briefcase"></i></span>
+                        <img src="images/neulogo.png" alt="Company Logo" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid #0096C7; box-shadow: 0 4px 8px rgba(0, 0, 0, 1.5);">
                     </div>
                     <div class="timeline-content">
                         <h3>Global Student Mentor</h3>
@@ -368,7 +553,7 @@
                         </div>
                     </div>
                     <div class="timeline-icon">
-                        <span class="icon"><i class="fa fa-briefcase"></i></span>
+                        <img src="images/dynocardiaLogo1.png" alt="Company Logo" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid #0096C7; box-shadow: 0 4px 8px rgba(0, 0, 0, 1.5);">
                     </div>
                     <div class="timeline-content">
                         <h3>Algorithms & Machine Learning Co-op</h3>
@@ -386,7 +571,7 @@
                         </div>
                     </div>
                     <div class="timeline-icon">
-                        <span class="icon"><i class="fa fa-briefcase"></i></span>
+                        <img src="images/experisLogo.png" alt="Company Logo" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid #0096C7; box-shadow: 0 4px 8px rgba(0, 0, 0, 1.5);">
                     </div>
                     <div class="timeline-content">
                         <h3>AI/ML Intern</h3>
@@ -407,7 +592,7 @@
                         </div>
                     </div>
                     <div class="timeline-icon">
-                        <span class="icon"><i class="fa fa-briefcase"></i></span>
+                        <img src="images/aitlogo.png" alt="Company Logo" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid #0096C7; box-shadow: 0 4px 8px rgba(0, 0, 0, 1.5);">
                     </div>
                     <div class="timeline-content">
                         <h3 style="color:black">Research Assistant</h3>
@@ -430,7 +615,7 @@
                         </div>
                     </div>
                     <div class="timeline-icon">
-                        <span class="icon"><i class="fa fa-briefcase"></i></span>
+                        <img src="images/ArgusSystemLogo.jpg" alt="Company Logo" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid #0096C7; box-shadow: 0 4px 8px rgba(0, 0, 0, 1.5);">
                     </div>
                     <div class="timeline-content">
                         <h3>Software Engineer</h3>
@@ -448,7 +633,7 @@
                         </div>
                     </div>
                     <div class="timeline-icon">
-                        <span class="icon"><i class="fa fa-briefcase"></i></span>
+                        <img src="images/ArgusSystemLogo.jpg" alt="Company Logo" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid #0096C7; box-shadow: 0 4px 8px rgba(0, 0, 0, 1.5);">
                     </div>
                     <div class="timeline-content">
                         <h3>Software Engineer</h3>
@@ -472,13 +657,13 @@
     </section>
 
 
-
+    <!-- Project Section -->
     <section class="ftco-section" id="project-section">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-5">
                 <div class="col-md-7 heading-section text-center ftco-animate">
                     <h1 class="big big-2">Projects</h1>
-                    <h2 class="mb-4" style="color: black;">Projects</h2>
+                    <h2 class="mb-4">Projects</h2>
                     <!-- <p>Below are the sample Data Analytics projects on SQL, Python, Power BI & ML.</p> -->
                 </div>
             </div>
@@ -491,10 +676,8 @@
                             <a href="" class="block-20 zoom-effect" style="background-image: url('images/proj_1.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Retrieval-Augmented Generation (RAG) System using Amazon Bedrock and Azure OpenAI</a>
+                                <h3>
+                                    <a href="" class="rag-link">Retrieval-Augmented Generation (RAG) System using Amazon Bedrock and Azure OpenAI</a>
                                 </h3>
                                 <p style="font-size: 90%;">
                                     Built a scalable knowledge base using AWS Lambda, Amazon S3, Bedrock, and OpenSearch; deployed a FastAPI app with Azure OpenAI GPT-3.5/4 for enhanced API interaction and LLM-powered responses.
@@ -509,10 +692,8 @@
                             <a href="" class="block-20 zoom-effect" style="background-image: url('images/proj_2.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Multimodal Visual Question Answering with Generative AI utilizing LLM and Vision Language Models</a>
+                                <h3>
+                                    <a href="" class="rag-link">Multimodal Visual Question Answering with Generative AI utilizing LLM and Vision Language Models</a>
                                 </h3>
                                 <p style="font-size: 90%;">
                                     Integrated Hugging Face pre-trained tokenizers, Vision Transformer, and LLMs, achieving 0.3 WUPS experimenting with model combinations viz. ViT, CLIP with BERT, GPT, and LLaVA VLM. Deployed with Docker and Kubernetes.
@@ -527,10 +708,8 @@
                             <a href="https://github.com/RobuRishabh/Camera-Mosiac" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_3.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="https://github.com/RobuRishabh/Camera-Mosiac" target="_blank" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Camera Mosiac</a>
+                                <h3>
+                                    <a href="https://github.com/RobuRishabh/Camera-Mosiac" target="_blank" class="rag-link">Camera Mosiac</a>
                                 </h3>
                                 <p style="font-size: 90%;">
                                     We will look at the role and use of calibrated cameras for simple photomosaicing.
@@ -552,10 +731,8 @@
                             <a href="https://github.com/RobuRishabh/Navigation-stack-using-two-different-sensors-Sensor-Fusion-of-GPS-and-IMU" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_4.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="https://github.com/RobuRishabh/Navigation-stack-using-two-different-sensors-Sensor-Fusion-of-GPS-and-IMU" target="_blank" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Navigation stack using two different sensors Sensor Fusion of GPS and IMU</a>
+                                <h3>
+                                    <a href="https://github.com/RobuRishabh/Navigation-stack-using-two-different-sensors-Sensor-Fusion-of-GPS-and-IMU" target="_blank" class="rag-link">Navigation stack using two different sensors Sensor Fusion of GPS and IMU</a>
                                 </h3>
                                 <p style="font-size: 90%;">
                                     Built a navigation stack using two different sensors - GPS & IMU, understand their relative strengths + drawbacks, and get an introduction to sensor fusion.
@@ -570,10 +747,8 @@
                             <a href="https://github.com/RobuRishabh/LiDAR-point-cloud-based-3D-object-detection" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_5.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="https://github.com/RobuRishabh/LiDAR-point-cloud-based-3D-object-detection" target="_blank" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">LiDAR point-cloud based 3D object detection</a>
+                                <h3>
+                                    <a href="https://github.com/RobuRishabh/LiDAR-point-cloud-based-3D-object-detection" target="_blank" class="rag-link">LiDAR point-cloud based 3D object detection</a>
                                 </h3>
                                 <p style="font-size: 90%;">
                                     The project's main goal is to investigate real-time object detection and tracking of pedestrians or bicyclists using a Velodyne LiDAR Sensor. Various point-cloud-based algorithms are implemented using the Open3d python package. The resulting 3D point cloud can then be processed to detect objects in the surrounding environment.
@@ -588,10 +763,8 @@
                             <a href="https://github.com/RobuRishabh/Autonomous-Disaster-Response-System" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_6.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="https://github.com/RobuRishabh/Autonomous-Disaster-Response-System" target="_blank" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Autonomous Disaster Response System</a>
+                                <h3>
+                                    <a href="https://github.com/RobuRishabh/Autonomous-Disaster-Response-System" target="_blank" class="rag-link">Autonomous Disaster Response System</a>
                                 </h3>
                                 <p style="font-size: 90%;">
                                     This project involved developing an autonomous system using mobile robots for disaster response. The system generated a complete map of an initially unknown environment and located any victims using AprilTags. Off-the-shelf components were used, and explore lite was modified to improve performance.
@@ -611,10 +784,8 @@
                             <a href="https://github.com/RobuRishabh/Content-Based-Image-Retrieval" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_7.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="https://github.com/RobuRishabh/Content-Based-Image-Retrieval" target="_blank" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Content Based Image Retrieval</a>
+                                <h3>
+                                    <a href="https://github.com/RobuRishabh/Content-Based-Image-Retrieval" target="_blank" class="rag-link">Content Based Image Retrieval</a>
                                 </h3>
                                 <p style="font-size: 90%;">The main aim of the project is to implement Content Based Image Retrieval which is one of the most important concepts of computer vision. The bog companies are using this to compare the similarity between the images based on the feature vector of the Targeted image.</p>
                             </div>
@@ -627,10 +798,8 @@
                             <a href="https://github.com/RobuRishabh/Real_time_2D_Object_Recognition" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_8.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="https://github.com/RobuRishabh/Real_time_2D_Object_Recognition" target="_blank" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Real-time 2-D Object Recognition</a>
+                                <h3>
+                                    <a href="https://github.com/RobuRishabh/Real_time_2D_Object_Recognition" target="_blank" class="rag-link">Real-time 2-D Object Recognition</a>
                                 </h3>
                                 <p style="font-size: 90%;">This project is about real-time 2D object recognition. The goal is to have the computer identify a specified set of objects placed on a white surface in a translation, scale, and rotation invariant manner from a camera looking straight down. The computer should be able to recognize single objects placed in the image and identify the objects.</p>
                             </div>
@@ -643,10 +812,8 @@
                             <a href="https://github.com/RobuRishabh/Calibration_and_Augmented_Reality" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_9.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="https://github.com/RobuRishabh/Calibration_and_Augmented_Reality" target="_blank" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Calibration and Augmented Reality</a>
+                                <h3>
+                                    <a href="https://github.com/RobuRishabh/Calibration_and_Augmented_Reality" target="_blank" class="rag-link">Calibration and Augmented Reality</a>
                                 </h3>
                                 <p style="font-size: 90%;">This project is about learning how to calibrate a camera , then use the calibration to generate virtual objects in a scene. After getting calibration parameters System will be able to identify a target and then position a virtual item in the scene next to the target so that it moves and orients itself appropriately in response to camera or targets.</p>
                             </div>
@@ -664,10 +831,8 @@
                             <a href="https://github.com/RobuRishabh/Lane_detector_Using_OpenCV_for_autonomous_vehicle" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_10.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="https://github.com/RobuRishabh/Lane_detector_Using_OpenCV_for_autonomous_vehicle" target="_blank" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Lane Detector Using OpenCV for Autonomous Vehicle</a>
+                                <h3>
+                                    <a href="https://github.com/RobuRishabh/Lane_detector_Using_OpenCV_for_autonomous_vehicle" target="_blank" class="rag-link">Lane Detector Using OpenCV for Autonomous Vehicle</a>
                                 </h3>
                                 <p style="font-size: 90%;">
                                     Lane detection is a crucial step in training autonomous driving cars. It helps identify and avoid entering other lanes by analyzing visual input. Lane recognition algorithms play a vital role in ADAS and autonomous vehicle systems. They accurately detect lane locations and borders, contributing to safe and reliable navigation.
@@ -682,10 +847,8 @@
                             <a href="https://github.com/RobuRishabh/Real-time-filtering" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_11.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="https://github.com/RobuRishabh/Real-time-filtering" target="_blank" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Real-time filtering</a>
+                                <h3>
+                                    <a href="https://github.com/RobuRishabh/Real-time-filtering" target="_blank" class="rag-link">Real-time filtering</a>
                                 </h3>
                                 <p style="font-size: 90%;">
                                     Implemented a 5x5 Gaussian filter, 3x3 Sobel X and 3x3 Sobel Y, generated a gradient magnitude image from the X and Y Sobel images, blurred and quantized a color image, did live video cartoonization, put sparkles into the image where there are strong edges.
@@ -700,10 +863,8 @@
                             <a href="https://github.com/RobuRishabh/Hotel_Data_Analytics" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_12.png'); width: 100%; height: 180px; background-size: cover;">
                             </a>
                             <div class="text mt-3 float-right d-block" style="font-size: 90%; line-height: 1.4;">
-                                <h3 class="heading">
-                                    <a href="https://github.com/RobuRishabh/Hotel_Data_Analytics" target="_blank" style="color: black; font-weight: bold; text-decoration: none; font-size: 90%;"
-                                       onmouseover="this.style.color='blue'"
-                                       onmouseout="this.style.color='black'">Hotel Data Analytics</a>
+                                <h3>
+                                    <a href="https://github.com/RobuRishabh/Hotel_Data_Analytics" target="_blank" class="rag-link">Hotel Data Analytics</a>
                                 </h3>
                                 <p style="font-size: 90%;">
                                     Conducted an in-depth data analysis for a hotel chain. I began by thoroughly understanding the core business challenge and then leveraged a Kaggle dataset. My work encompassed data cleaning, transforming the dataset, and extracting valuable insights to provide a comprehensive understanding of the hotel chain's data.
@@ -715,46 +876,46 @@
             </div>
 
             <!-- <div class="row d-flex justify-content-center" data-aos="fade-up">
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-                    <a href="https://github.com/RobuRishabh/Medical_Data_Extraction" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_13.jpg');">
-                    </a>
-                    <div class="text mt-3 float-right d-block">
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="blog-entry justify-content-end">
+                            <a href="https://github.com/RobuRishabh/Medical_Data_Extraction" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_13.jpg');">
+                            </a>
+                            <div class="text mt-3 float-right d-block">
 
-                        <h3 class="heading"><a href="https://github.com/RobuRishabh/Medical_Data_Extraction" target="_blank">Medical Data Extraction</a></h3>
-                        <p>Hospitals and medical facilities routinely generate various documents such as patient medical records and prescriptions. These documents are essential for insurance claims processing. To streamline this process and improve efficiency, I've developed a solution that enables hospitals to scan these documents and automatically extract the crucial data.</p>
+                                <h3 ><a href="https://github.com/RobuRishabh/Medical_Data_Extraction" target="_blank">Medical Data Extraction</a></h3>
+                                <p>Hospitals and medical facilities routinely generate various documents such as patient medical records and prescriptions. These documents are essential for insurance claims processing. To streamline this process and improve efficiency, I've developed a solution that enables hospitals to scan these documents and automatically extract the crucial data.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-                    <a href="https://github.com/RobuRishabh/Case_Study_on_Indian_Startups_Coding_Ninjas" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_14.jpg');">
-                    </a>
-                    <div class="text mt-3 float-right d-block">
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="blog-entry justify-content-end">
+                            <a href="https://github.com/RobuRishabh/Case_Study_on_Indian_Startups_Coding_Ninjas" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_14.jpg');">
+                            </a>
+                            <div class="text mt-3 float-right d-block">
 
-                        <h3 class="heading"><a href="https://github.com/RobuRishabh/Case_Study_on_Indian_Startups_Coding_Ninjas" target="_blank">Case Study on Indian Startups Coding Ninjas</a></h3>
-                        <p>Detailed analysis of the Indian Startups for interpretation of trends and patterns to facilitate selection of proper city, useful investors, funding type e.t.c, for different startups.</p>
+                                <h3 class="heading"><a href="https://github.com/RobuRishabh/Case_Study_on_Indian_Startups_Coding_Ninjas" target="_blank">Case Study on Indian Startups Coding Ninjas</a></h3>
+                                <p>Detailed analysis of the Indian Startups for interpretation of trends and patterns to facilitate selection of proper city, useful investors, funding type e.t.c, for different startups.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-                    <a href="https://github.com/RobuRishabh/Tableau-StayCatin-CodingNinjas" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_15.jpg');">
-                    </a>
-                    <div class="text mt-3 float-right d-block">
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="blog-entry justify-content-end">
+                            <a href="https://github.com/RobuRishabh/Tableau-StayCatin-CodingNinjas" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/proj_15.jpg');">
+                            </a>
+                            <div class="text mt-3 float-right d-block">
 
-                        <h3 class="heading"><a href="https://github.com/RobuRishabh/Tableau-StayCatin-CodingNinjas" target="_blank">Tableau StayCatin CodingNinjas</a></h3>
-                        <p>This GitHub repository contains a Tableau project aimed at analyzing and visualizing data from StayCatin.com, an online platform for booking short-term rental properties similar to Airbnb. The project was designed to assist StayCatin.com's management team in making data-driven business decisions by providing critical insights into property performance, pricing strategies, and customer reviews.</p>
+                                <h3 class="heading"><a href="https://github.com/RobuRishabh/Tableau-StayCatin-CodingNinjas" target="_blank">Tableau StayCatin CodingNinjas</a></h3>
+                                <p>This GitHub repository contains a Tableau project aimed at analyzing and visualizing data from StayCatin.com, an online platform for booking short-term rental properties similar to Airbnb. The project was designed to assist StayCatin.com's management team in making data-driven business decisions by providing critical insights into property performance, pricing strategies, and customer reviews.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-    </div> -->
+            </div> -->
         </div>
 
         <div class="container">
             <div class="row justify-content-center mb-5 pb-5" data-aos="fade-up">
                 <div class="col-md-7 heading-section text-center ftco-animate">
-                    <h2 class="mb-4" style="color: black;">On Going Projects</h2>
+                    <h2 class="mb-4 normal-txt">Ongoing Projects</h2>
                 </div>
             </div>
 
@@ -806,7 +967,10 @@
                 </div>
             </div>
 
-
+            <br>
+            <br>
+            <br>
+            <br>
             <!-- <div class="row d-flex" data-aos="fade-up">
                 <div class="col-md-4 d-flex ftco-animate">
                     <div class="blog-entry justify-content-end">
@@ -834,6 +998,7 @@
 
     </section>
 
+    <!-- More projects on github -->
     <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
         <!--<div class="container">
             <div class="row d-md-flex align-items-center">
@@ -874,26 +1039,27 @@
 
         <div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
             <div class="container">
-            <div class="row justify-content-center" data-aos="fade-up">
-                <div class="col-md-7 ftco-animate text-center">
-                    <h2>More projects on<span> Github  </span> </h2>
-                    <div class="heading">
-                        <h4> I love to solve business problems &amp; uncover hidden data stories </h4>
-                        <br>
-                        <p><a href="https://github.com/RobuRishabh" target="_blank" class="btn btn-primary py-3 px-5">GitHub</a></p>
+                <div class="row justify-content-center" data-aos="fade-up">
+                    <div class="col-md-7 ftco-animate text-center">
+                        <h2>More projects on<span> Github  </span> </h2>
+                        <div class="heading">
+                            <h4> I love to solve business problems &amp; uncover hidden data stories </h4>
+                            <br>
+                            <p><a href="https://github.com/RobuRishabh" target="_blank" class="btn btn-primary py-3 px-5">GitHub</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </section>
 
+    <!-- Blog section -->
     <section class="ftco-section" id="Blog-section">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-5">
                 <div class="col-md-7 heading-section text-center ftco-animate">
-                    <h1 class="big big-2">Blogs</h1>
-                    <h2 class="mb-4" style="color: black;">Blogs</h2>
+                    <h1 class="big big-2" style="font-size:80px">Blogs</h1>
+                    <h2 class="mb-4">Blogs</h2>
                     <!-- <p>Below are the sample Data Analytics projects on SQL, Python, Power BI & ML.</p> -->
                 </div>
             </div>
@@ -908,7 +1074,8 @@
                 <button class="tab_btn">All Blogs</button>
                 <div class="line"> </div>
             </div>
-
+            <br>
+            <br>
             <div class="content_box">
 
                 <!-- CPP -->
@@ -921,7 +1088,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -933,7 +1101,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -945,7 +1114,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -957,7 +1127,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -969,7 +1140,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -981,7 +1153,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -993,7 +1166,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1011,7 +1185,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1024,7 +1199,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1037,7 +1213,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1050,7 +1227,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1063,7 +1241,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1076,7 +1255,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1089,7 +1269,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1102,7 +1283,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1115,7 +1297,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1128,7 +1311,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1141,7 +1325,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1154,7 +1339,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1167,7 +1353,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1180,7 +1367,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1193,7 +1381,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1202,8 +1391,18 @@
 
                 <!-- Deep Learning -->
                 <div class="content">
-
-                    <br>
+                    <a href="https://medium.com/@RobuRishabh/understanding-and-implementing-faster-r-cnn-248f7b25ff96" target="_blank" class="blog-content-link">
+                        <div class="blog-content">
+                            <h3 class="heading" style="color: Black; text-decoration: none; font-weight: bold;">NLP:Applying SVD on Term-Document Matrices</h3>
+                            <p style="color: grey; ">
+                                The Term-Document Matrix (TDM) is a simple and popular method used for this purpose. It is a type of matrix used to represent the relationship between terms (words) and documents in a...
+                            </p>
+                            <span style="transition: transform 0.5s ease, color 0.5s ease;"
+                                  onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
+                        </div>
+                    </a>
                     <br>
                 </div>
 
@@ -1218,7 +1417,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1231,7 +1431,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1243,7 +1444,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1260,7 +1462,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1272,7 +1475,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1289,7 +1493,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1302,7 +1507,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1315,7 +1521,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1328,7 +1535,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1341,7 +1549,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1354,7 +1563,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1367,7 +1577,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1380,7 +1591,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1393,7 +1605,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1406,7 +1619,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1419,7 +1633,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1432,7 +1647,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1445,7 +1661,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1458,7 +1675,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1471,7 +1689,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1484,7 +1703,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1497,7 +1717,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1510,7 +1731,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1523,7 +1745,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1536,7 +1759,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1549,7 +1773,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1562,7 +1787,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1575,7 +1801,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1588,7 +1815,8 @@
                             </p>
                             <span style="transition: transform 0.5s ease, color 0.5s ease;"
                                   onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"><span class="icon-medium"></span></span>
+                                  onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';"
+                                  onfocus="this.style.color='black';" onblur="this.style.color='black';"><span class="icon-medium" style="color:black;"></span></span>
                         </div>
                     </a>
                     <br>
@@ -1599,63 +1827,82 @@
                 const contents = document.querySelectorAll('.content');
                 const line = document.querySelector('.line');
 
-                function updateLine(position, width)
-                {
+                function updateLine(position, width) {
                     line.style.transform = `translateX(${position}px)`;
                     line.style.width = `${width}px`;
                 }
 
-                tabs.forEach((tab, index) =>
-                {
-                    AOS.refresh();
-                    tab.addEventListener('click', () =>
-                    {
+                tabs.forEach((tab, index) => {
+                    tab.addEventListener('click', () => {
                         tabs.forEach(t => t.classList.remove('active'));
                         contents.forEach(c => c.classList.remove('active'));
 
                         tab.classList.add('active');
                         contents[index].classList.add('active');
 
+
                         // Use offsetLeft and offsetWidth to correctly calculate the line's position and width
                         updateLine(tab.offsetLeft, tab.offsetWidth);
-                        // Add a small delay before refreshing AOS
-                        // Log the height of the Blog section to debug
-                        console.log("Blog-section height: ", document.getElementById('Blog-section').offsetHeight);
-
                     });
                 });
 
                 // Initialize position and width of the line based on the active tab at load
-                window.addEventListener('DOMContentLoaded', () =>
-                {
+                window.addEventListener('DOMContentLoaded', () => {
                     const activeTab = document.querySelector('.tab_btn.active');
                     updateLine(activeTab.offsetLeft, activeTab.offsetWidth);
                 });
             </script>
         </div>
 
-        <div class="ftco-section contact-section ftco-no-pb">
+        <br>
+        <br>
+        <br>
+        <br>
+        <!-- more blogs on medium -->
+        <!-- <div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/blog.jpg)">
             <div class="container">
-            <div class="row justify-content-center" >
-                <div class="col-md-7 ftco-animate text-center">
-                    <h2 style="color: black;">Checkout my Medium Profile for more such content, also do Subscribe & follow for latest updates! </h2>
-                    <div class="heading">
-                        <br>
-                        <p><a href="https://medium.com/@RobuRishabh" target="_blank" class="btn btn-primary py-3 px-5">M E D I U M</a></p>
+                <div class="row justify-content-center">
+                    <div class="col-md-7 ftco-animate text-center">
+                        <h2>Checkout my  <span>Medium</span> Profile for more such content!</h2>
+                        <div>
+                            <br>
+                            <p class="normal-txt">Also do Subscribe & follow for latest updates.</p>
+                            <p><a href="https://medium.com/@RobuRishabh" target="_blank" class="btn btn-primary py-3 px-5">M E D I U M</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div> -->
+
+    </section>
+
+<!-- More on medium -->
+    <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
+        <div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/blog.png)">
+            <div class="container">
+                <div class="row justify-content-center" data-aos="fade-up">
+                    <div class="col-md-7 ftco-animate text-center">
+                        <h2 style="color:antiquewhite">Checkout my<span> Medium  </span> Profile for more such content!</h2>
+                        <div class="heading">
+                            <h4> Also do Subscribe & follow for latest updates. </h4>
+                            <br>
+                            <p><a href="https://medium.com/@RobuRishabh" target="_blank" class="btn btn-primary py-3 px-5">M E D I U M</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate">
                     <h1 class="big big-2">Contact</h1>
-                    <h2 class="mb-4" style="color: black;">Contact Me</h2>
-                    <p style="color:black">Below are the details to reach out to me!</p>
+                    <h2 class="mb-4">Contact Me</h2>
+                    <br>
+                    <p class="normal-txt">Below are the details to reach out to me!</p>
                 </div>
             </div>
 
@@ -1665,8 +1912,8 @@
                         <div class="icon d-flex align-items-center justify-content-center">
                             <span class="icon-map-signs"></span>
                         </div>
-                        <h3 class="mb-4" style="color: black; font-weight:bold">Address</h3>
-                        <p style="color:black">Boston, MA, USA</p>
+                        <h3 class="normal-txt">Address</h3>
+                        <p>Boston, MA, USA</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-5 d-flex ftco-animate">
@@ -1674,12 +1921,10 @@
                         <div class="icon d-flex align-items-center justify-content-center">
                             <span class="icon-paper-plane"></span>
                         </div>
-                        <h3 class="mb-4" style="color: black; font-weight:bold">Email Address</h3>
+                        <h3 class="normal-txt">Email Address</h3>
                         <p>
                             <a href="mailto:singh.risha@northeastern.edu"
-                               style="transition: transform 0.5s ease, color 0.5s ease; color: black;"
-                               onmouseover="this.style.transform='scale(1.2)'; this.style.color='lightblue';"
-                               onmouseout="this.style.transform='scale(1)'; this.style.color='black';">
+                               class="rag-link">
                                 singh.risha@northeastern.edu
                             </a>
 
@@ -1697,51 +1942,33 @@
                 <div class="container">
                     <br>
                     <ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-                        <li class="ftco-animate normal-txt" style="color:black; font-weight:bold">Find me on  </li>
+                        <li class="ftco-animate normal-txt">Find me on</li>
                         <li class="ftco-animate">
-                            <a href="https://www.youtube.com/@RobuRishabh" target="_blank" style="transition: transform 0.5s ease, color 0.5s ease;"
-                               onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                               onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';">
-                                <span class="icon-youtube" style="font-size: 45px;"></span>
+                            <a href="https://www.youtube.com/@RobuRishabh" target="_blank" class="social-icon">
+                                <span class="icon-youtube"></span>
                             </a>
                         </li>
                         <li class="ftco-animate">
-                            <a href="https://www.linkedin.com/in/roburishabh/" target="_blank" style="transition: transform 0.5s ease, color 0.5s ease;"
-                               onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                               onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';">
-                                <span class="icon-linkedin" style="font-size: 45px;"></span>
+                            <a href="https://www.linkedin.com/in/roburishabh/" target="_blank" class="social-icon">
+                                <span class="icon-linkedin"></span>
                             </a>
                         </li>
                         <li class="ftco-animate">
-                            <a href="https://github.com/RobuRishabh" target="_blank" style="transition: transform 0.5s ease, color 0.5s ease;"
-                               onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                               onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';">
-                                <span class="icon-github" style="font-size: 45px;"></span>
+                            <a href="https://github.com/RobuRishabh" target="_blank" class="social-icon">
+                                <span class="icon-github"></span>
                             </a>
                         </li>
                         <li class="ftco-animate">
-                            <a href="https://medium.com/@RobuRishabh" target="_blank"
-                               style="transition: transform 0.5s ease, color 0.5s ease;"
-                               onmouseover="this.style.transform='scale(1.2)'; this.children[0].style.color='lightblue';"
-                               onmouseout="this.style.transform='scale(1)'; this.children[0].style.color='black';">
-                                <span class="icon-medium" style="font-size: 45px;"></span>
+                            <a href="https://medium.com/@RobuRishabh" target="_blank" class="social-icon">
+                                <span class="icon-medium"></span>
                             </a>
                         </li>
-
-
                     </ul>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-
                 </div>
             </div>
         </div>
     </section>
-
+    <br>
 
 
 
@@ -1799,6 +2026,28 @@
         window.addEventListener('scroll', checkTimelineItems);
         window.addEventListener('load', checkTimelineItems); // Check on page load
     </script>
+    <script>
+        // Select the checkbox and the body element
+        const toggleSwitch = document.getElementById('theme-toggle');
+        const bodyElement = document.body;
 
+        // Check localStorage for saved theme preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+            bodyElement.classList.add('dark-mode');
+        }
+
+        // Toggle the theme when the checkbox is clicked
+        toggleSwitch.addEventListener('change', function () {
+            if (toggleSwitch.checked) {
+                bodyElement.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                bodyElement.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>
