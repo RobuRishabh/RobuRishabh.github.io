@@ -7,7 +7,7 @@ $white: #fff;
 $black: #000000;
 $darken: #232931;
 
-$primary: #ffbd39;
+$primary: #0077B6;
 $secondary: #a0f669;
 
 
@@ -1528,8 +1528,9 @@ textarea.form-control {
 			font-size: 20px;
 			margin-bottom: 16px;
 			font-weight: 500;
+			color:$black;
 			a {
-				color: $white;
+				color: $black;
 				&:hover, &:focus, &:active {
 					color: $primary;
 				}

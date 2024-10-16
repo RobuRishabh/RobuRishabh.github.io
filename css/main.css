@@ -695,7 +695,7 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
 	background: #313131;
-	color: #FFFFFF;
+	color: #81D8D0;
 }
 .button.button-primary:hover,
 a.button.button-primary:hover,
@@ -1245,7 +1245,7 @@ header .logo a {
 }
 .main-navigation li a {
 	display: block;
-	color: #FFFFFF;
+	color: #81D8D0;
 	width: auto;
 	padding: 15px 0;
 	line-height: 16px;
@@ -1325,7 +1325,7 @@ header .logo a {
 	transform: translateY(-2.1rem);
 }
 .intro-content h1 {
-	color: #FFFFFF;
+	color: #81D8D0;
 	font-family: "poppins-medium", sans-serif;
 	font-size: 8.4rem;
 	line-height: 1.071;
@@ -1352,7 +1352,7 @@ header .logo a {
 	line-height: 2.4rem;
 	text-transform: uppercase;
 	letter-spacing: .2rem;
-	color: #FFFFFF;
+	color: #81D8D0;
 	text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 .intro-content .intro-position span {
@@ -1373,7 +1373,7 @@ header .logo a {
 	color: rgba(255, 255, 255, 0.3);
 }
 .intro-content .button {
-	color: #FFFFFF !important;
+	color: #81D8D0 !important;
 	border-color: rgba(255, 255, 255, 0.3);
 	height: 6rem !important;
 	line-height: 5.4rem !important;
@@ -1413,7 +1413,7 @@ header .logo a {
 	padding: 0;
 }
 .intro-social li a, .intro-social li a:visited {
-	color: #FFFFFF;
+	color: #81D8D0;
 }
 .intro-social li a:hover, .intro-social li a:focus {
 	color: #cc005f;
@@ -1490,7 +1490,7 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #about {
-	background: #FFFFFF;
+	background: #81D8D0;
 	padding-top: 12rem;
 	padding-bottom: 15rem;
 }
@@ -1661,7 +1661,7 @@ header .logo a {
 	background: #313131;
 	border-radius: 50%;
 	text-align: center;
-	color: #FFFFFF;
+	color: #81D8D0;
 	position: absolute;
 	left: 35%;
 	top: .9rem;
@@ -1790,7 +1790,7 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #portfolio {
-	background: #FFFFFF;
+	background: #81D8D0;
 	padding-top: 12rem;
 	padding-bottom: 12rem;
 }
@@ -1841,7 +1841,7 @@ header .logo a {
 }
 
 #portfolio .folio-title {
-	color: #FFFFFF;
+	color: #81D8D0;
 	font-size: 3.3rem;
 	padding: 0 3rem;
 	margin-bottom: 0;
@@ -1894,7 +1894,7 @@ header .logo a {
  */
 .popup-modal {
 	max-width: 550px;
-	background: #FFFFFF;
+	background: #81D8D0;
 	position: relative;
 	margin: 0 auto;
 }
@@ -1938,7 +1938,7 @@ header .logo a {
 	font-family: "poppins-bold", sans-serif;
 	font-size: 1.2rem;
 	line-height: 6rem;
-	color: #FFFFFF;
+	color: #81D8D0;
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	cursor: pointer;
@@ -2147,7 +2147,7 @@ header .logo a {
 	color: #FF0077;
 }
 .services-list h3 {
-	color: #FFFFFF;
+	color: #81D8D0;
 }
 .services-list .desc {
 	color: rgba(255, 255, 255, 0.6);
@@ -2169,7 +2169,7 @@ header .logo a {
 	margin: 1.2rem .8rem 0 .8rem;
 	border-radius: 50%;
 	display: inline-block;
-	background: #FFFFFF;
+	background: #81D8D0;
 }
 .owl-theme .owl-controls .owl-page.active span {
 	background: #FF0077;
@@ -2203,7 +2203,7 @@ header .logo a {
 	color: #000000;
 }
 #stats .stat-count {
-	color: #FFFFFF;
+	color: #81D8D0;
 	font-size: 3.6rem;
 	margin-top: 1.2rem;
 	margin-bottom: 0;
@@ -2310,7 +2310,7 @@ header .logo a {
 	letter-spacing: .1rem;
 	padding: 0 2rem;
 	margin: 0;
-	color: #FFFFFF;
+	color: #81D8D0;
 	background: #FF0077;
 }
 #contact form .form-field label::after {
@@ -2343,7 +2343,7 @@ header .logo a {
 #contact input[type="password"]:focus,
 #contact input[type="email"]:focus {
 	border-color: #FF0077;
-	color: #FFFFFF;
+	color: #81D8D0;
 }
 #contact textarea {
 	min-height: 20rem;
@@ -2351,7 +2351,7 @@ header .logo a {
 }
 #contact textarea:focus {
 	border-color: #FF0077;
-	color: #FFFFFF;
+	color: #81D8D0;
 }
 #contact button.submitform {
 	font-size: 1.5rem;
@@ -2363,7 +2363,7 @@ header .logo a {
 	margin-top: 4.8rem;
 	width: 100%;
 	background: #FF0077;
-	color: #FFFFFF;
+	color: #81D8D0;
 }
 #contact button.submitform:hover, #contact button.submitform:focus {
 	background: #cc005f;
@@ -2398,7 +2398,7 @@ header .logo a {
 #submit-loader .text-loader {
 	display: none;
 	font-family: "poppins-bold", sans-serif;
-	color: #FFFFFF;
+	color: #81D8D0;
 	letter-spacing: .3rem;
 	text-transform: uppercase;
 }
@@ -2422,7 +2422,7 @@ header .logo a {
 }
 .contact-info .icon i {
 	font-size: 4.2rem;
-	color: #FFFFFF;
+	color: #81D8D0;
 }
 .contact-info h5 {
 	color: #FF0077;
@@ -2443,7 +2443,7 @@ header .logo a {
 .s-loader > div {
 	width: 1rem;
 	height: 1rem;
-	background-color: #FFFFFF;
+	background-color: #81D8D0;
 	border-radius: 100%;
 	display: inline-block;
 	margin-right: .9rem;
@@ -2496,7 +2496,7 @@ footer {
 	font-family: "poppins-regular", sans-serif;
 }
 footer a, footer a:visited {
-	color: #FFFFFF;
+	color: #81D8D0;
 }
 footer a:hover, footer a:focus {
 	color: #FF0077;
@@ -2521,7 +2521,7 @@ footer .footer-social li {
 	padding: 0;
 }
 footer .footer-social li a {
-	color: #FFFFFF;
+	color: #81D8D0;
 }
 footer .copyright span {
 	display: inline-block;
@@ -2579,7 +2579,7 @@ footer .copyright span:last-child::after {
 	line-height: 6.6rem;
 	text-align: center;
 	background: #cc005f;
-	color: #FFFFFF;
+	color: #81D8D0;
 	text-align: center;
 	text-transform: uppercase;
 	-moz-transition: all 0.3s ease-in-out;
